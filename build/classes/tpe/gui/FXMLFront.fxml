@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tpe.gui.FXMLFrontController">
+   <children>
+      <SplitPane dividerPositions="0.3572192513368984" layoutX="6.0" layoutY="6.0" prefHeight="583.0" prefWidth="657.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TitledPane prefHeight="79.0" prefWidth="330.0" text="Map">
+                     <content>
+                        <AnchorPane prefHeight="42.0" prefWidth="328.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="20.0" prefHeight="17.0" prefWidth="47.0" text="Size X" />
+                              <Label layoutX="165.0" layoutY="20.0" prefHeight="17.0" prefWidth="47.0" text="Size Y" />
+                              <TextField fx:id="txtMapSizeX" layoutX="61.0" layoutY="15.0" prefHeight="27.0" prefWidth="83.0" />
+                              <TextField fx:id="txtMapSizeY" layoutX="212.0" layoutY="15.0" prefHeight="27.0" prefWidth="86.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+                  <TitledPane layoutX="1.0" layoutY="91.0" prefHeight="112.0" prefWidth="331.0" text="Predators">
+                     <content>
+                        <AnchorPane prefHeight="90.0" prefWidth="329.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="91.0" text="Initial number" />
+                              <TextField fx:id="txtPredInitNumber" layoutX="138.0" layoutY="9.0" />
+                              <Label layoutX="14.0" layoutY="52.0" prefHeight="17.0" prefWidth="100.0" text="Death ratio (%)" />
+                              <TextField fx:id="txtPredDeathRate" layoutX="138.0" layoutY="46.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+                  <TitledPane layoutY="213.0" prefHeight="100.0" prefWidth="331.0" text="Preys">
+                     <content>
+                        <AnchorPane prefHeight="139.0" prefWidth="329.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="91.0" text="Initial number" />
+                              <TextField fx:id="txtPreyInitNumber" layoutX="138.0" layoutY="9.0" />
+                              <Label layoutX="14.0" layoutY="52.0" prefHeight="17.0" prefWidth="115.0" text="increase ratio (%)" />
+                              <TextField fx:id="txtPreyDeathRate" layoutX="138.0" layoutY="46.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+                  <TitledPane layoutY="335.0" prefHeight="122.0" prefWidth="333.0" text="Step">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="11.0" layoutY="10.0" prefHeight="17.0" prefWidth="91.0" text="Step number" />
+                              <TextField fx:id="txtStepNumber" layoutX="143.0" layoutY="5.0" prefHeight="27.0" prefWidth="59.0" />
+                              <Label layoutX="14.0" layoutY="39.0" prefHeight="17.0" prefWidth="91.0" text="Nb predators" />
+                              <TextField fx:id="txtPredNumber" layoutX="143.0" layoutY="36.0" />
+                              <Label layoutX="14.0" layoutY="71.0" prefHeight="17.0" prefWidth="91.0" text="Nb preys" />
+                              <TextField fx:id="txtPreyNumber" layoutX="143.0" layoutY="66.0" />
+                              <Button fx:id="btProcess" layoutX="235.0" layoutY="5.0" mnemonicParsing="false" onAction="#onProcessAction" text="Run" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="581.0" prefWidth="362.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <TabPane layoutX="86.0" layoutY="146.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
+                      <Tab text="Graph">
+                           <content>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <LineChart fx:id="chart" layoutX="14.0" layoutY="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <xAxis>
+                                        <NumberAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Table">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="43.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <content>
+                                          <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0">
+                                            <columns>
+                                              <TableColumn fx:id="colStep" prefWidth="134.0" text="Step" />
+                                              <TableColumn fx:id="colPreys" prefWidth="153.0" text="Preys" />
+                                                <TableColumn fx:id="colPreds" minWidth="2.0" prefWidth="189.0" text="Predators" />
+                                            </columns>
+                                          </TableView>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab text="Map">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Canvas fx:id="canvas" height="200.0" width="200.0" />
+                                    <Canvas fx:id="preyCanvas" height="200.0" width="200.0" />
+                                    <Canvas fx:id="predCanvas" height="200.0" width="200.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

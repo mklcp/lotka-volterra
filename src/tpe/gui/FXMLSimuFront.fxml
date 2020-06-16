@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tpe.gui.FXMLSimuFrontController">
+   <children>
+      <Accordion prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <panes>
+          <TitledPane animated="false" text="Species">
+               <content>
+                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <ButtonBar prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                <buttons>
+                                    <Button mnemonicParsing="false" onAction="#addNewSpecies" text="Add New" />
+                                    <Button mnemonicParsing="false" onAction="#deleteSpecies" text="Delete" />
+                                    <Button mnemonicParsing="false" onAction="#editSelectedSpecies" text="Edit" />
+                                </buttons>
+                              </ButtonBar>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="45.0" prefHeight="310.0" prefWidth="298.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
+                                 <content>
+                                    <TableView fx:id="tableSpecs" prefHeight="306.0" prefWidth="296.0">
+                                       <columns>
+                                          <TableColumn fx:id="colName" prefWidth="120.0" text="Name" />
+                                          <TableColumn fx:id="colRate" prefWidth="60.0" resizable="false" text="Evol." />
+                                          <TableColumn fx:id="colInit" prefWidth="60.0" resizable="false" text="Init" />
+                                          <TableColumn fx:id="colColor" prefWidth="60.0" resizable="false" text="Color" />
+                                       </columns>
+                                    </TableView>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="8.0" layoutY="26.0" text="Species" />
+                              <TextField fx:id="txtName" layoutX="60.0" layoutY="21.0" prefHeight="27.0" prefWidth="131.0" />
+                              <Label layoutX="8.0" layoutY="71.0" text="Evol. Rate" />
+                              <TextField fx:id="txtEvolRate" layoutX="77.0" layoutY="66.0" prefHeight="27.0" prefWidth="56.0" />
+                              <Label layoutX="154.0" layoutY="71.0" text="Init. nb" />
+                              <TextField fx:id="txtInit" layoutX="200.0" layoutY="66.0" prefHeight="27.0" prefWidth="89.0" />
+                              <ColorPicker fx:id="colorPick" layoutX="200.0" layoutY="21.0" prefHeight="27.0" prefWidth="89.0" />
+                              <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="5.0" layoutY="155.0" prefHeight="178.0" prefWidth="288.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                                 <content>
+                                    <TableView fx:id="tableInter" prefHeight="200.0" prefWidth="200.0">
+                                      <columns>
+                                        <TableColumn fx:id="colInterType" prefWidth="82.0" text="Interaction" />
+                                          <TableColumn fx:id="colInterProba" prefWidth="70.0" text="Proba (%)" />
+                                        <TableColumn fx:id="colInterEsp" prefWidth="208.0" text="Species" />
+                                      </columns>
+                                    </TableView>
+                                 </content></ScrollPane>
+                              <ButtonBar layoutX="5.0" layoutY="104.0" prefHeight="40.0" prefWidth="288.0">
+                                 <buttons>
+                                    <Button mnemonicParsing="false" onAction="#onSaveAction" text="Save" />
+                                  <Button mnemonicParsing="false" onAction="#onAddInteraction" text="Add" />
+                                    <Button mnemonicParsing="false" onAction="#deleteInteraction" text="Delete" />
+                                 </buttons></ButtonBar>
+                              <VBox layoutX="102.0" layoutY="117.0" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </content>
+            </TitledPane>
+          <TitledPane animated="false" text="Map">
+               <content>
+                  <AnchorPane>
+                     <children>
+                        <Label layoutX="24.0" layoutY="22.0" prefHeight="17.0" prefWidth="70.0" text="Size X" />
+                        <Label layoutX="24.0" layoutY="68.0" prefHeight="17.0" prefWidth="70.0" text="Size Y" />
+                        <TextField fx:id="txtSizeX" layoutX="182.0" layoutY="17.0" prefHeight="27.0" prefWidth="65.0" />
+                        <TextField fx:id="txtSizeY" layoutX="182.0" layoutY="63.0" prefHeight="27.0" prefWidth="65.0" />
+                        <Button fx:id="btInitMap" layoutX="24.0" layoutY="135.0" mnemonicParsing="false" onAction="#initMap" prefHeight="27.0" prefWidth="250.0" text="Initialize Map" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+            <TitledPane prefHeight="200.0" prefWidth="200.0" text="Simulation">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="23.0" text="Number of steps" />
+                        <TextField fx:id="txtNbLoop" layoutX="170.0" layoutY="18.0" prefHeight="27.0" prefWidth="75.0" />
+                        <Button fx:id="btInitSimu" layoutX="14.0" layoutY="97.0" mnemonicParsing="false" onAction="#onSimuInit" prefHeight="27.0" prefWidth="101.0" text="Run" textFill="#05ab13" underline="true" />
+                        <Button layoutX="14.0" layoutY="155.0" mnemonicParsing="false" onAction="#clear" prefHeight="27.0" prefWidth="101.0" text="Clear" />
+                        <Button fx:id="btWriteOnFile" layoutX="98.0" layoutY="332.0" mnemonicParsing="false" onAction="#onWriteOnFile" prefHeight="27.0" prefWidth="102.0" text="To File (txt)" />
+                        <Button layoutX="170.0" layoutY="97.0" mnemonicParsing="false" onAction="#stop" prefHeight="27.0" prefWidth="101.0" text="Stop" textFill="#ee0e0e" underline="true">
+                           <effect>
+                              <ColorAdjust />
+                           </effect>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+        </panes>
+      </Accordion>
+      <TabPane layoutX="273.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Graph">
+               <content>
+                  <AnchorPane>
+                     <children>
+                        <LineChart fx:id="chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <xAxis>
+                            <NumberAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
+          <Tab text="Table">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </ScrollPane>
+               </content></Tab>
+            <Tab text="Map">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <AnchorPane fx:id="pane">
+                           <children>
+                              <Canvas fx:id="canvas" height="200.0" width="200.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
