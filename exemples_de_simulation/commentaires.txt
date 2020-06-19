@@ -402,7 +402,7 @@ map: 40 x 40
 
 
 ## sim_20.1
-not really interesting, because it's saturated without enough relations
+trop saturé
 
         TypeEspece a = new TypeEspece("A", 40, 0, 1.1, Color.SALMON);
         TypeEspece b = new TypeEspece("B", 40, 0, 1.1, Color.THISTLE);
